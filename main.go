@@ -77,7 +77,7 @@ func CORSEnabledFunction(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// Register the CORSEnabledFunction with the functions framework
-	funcframework.RegisterHTTPFunction("/", CORSEnabledFunction)
+	funcframework.RegisterHTTPFunction("/api", CORSEnabledFunction)
 
 	// Start the functions framework, listening on port 8080
 	if err := funcframework.Start("8080"); err != nil {
