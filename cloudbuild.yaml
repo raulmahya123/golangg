@@ -1,0 +1,16 @@
+steps:
+- name: 'gcr.io/cloud-builders/go'
+  args: ['build', '-o', 'function']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - 'functions'
+  - 'deploy'
+  - 'your-function-name' # Replace with your desired function name
+  - '--trigger-http'
+  - '--entry-point=CORSEnabledFunction' # Replace with the name of your function
+  - '--allow-unauthenticated'
+  - '--runtime=go116'
+  - '--source=./'
+  - '--region=us-central1' # Replace with your desired region
+images:
+- 'gcr.io/$PROJECT_ID/your-function-name' # Replace with your desired function name and project ID
